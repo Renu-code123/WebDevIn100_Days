@@ -1,0 +1,360 @@
+/* ===============================
+   GLOBAL VARIABLES & RESET
+=============================== */
+:root {
+  --bg: #0f1220;
+  --panel: #171a2b;
+  --panel-2: #1f2340;
+  --text: #e6e8ff;
+  --muted: #9aa0c3;
+  --accent: #7c5cff;
+  --accent-2: #2de2e6;
+  --danger: #ff5c7c;
+  --success: #00e38c;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #1b1f3a 0%, transparent 60%),
+    radial-gradient(800px 500px at 100% 0%, #1a1f3a 0%, transparent 50%),
+    var(--bg);
+}
+
+/* Light theme */
+body.light-theme {
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --panel-2: #f2f3f8;
+  --text: #1a1a1a;
+  --muted: #555;
+  --accent: #7c5cff;
+  --accent-2: #2de2e6;
+  --danger: #ff5c7c;
+  --success: #27c580;
+  background: var(--bg);
+}
+
+/* ===============================
+   LAYOUT & COMPONENTS
+=============================== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand .logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: var(--shadow);
+}
+.brand h1 {
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: .3px;
+}
+.brand h1 span {
+  opacity: .85;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn {
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--panel-2);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: .2s transform ease, .2s background ease, .2s box-shadow ease;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  background: #252a52;
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #090a14;
+}
+.btn.success {
+  background: linear-gradient(135deg, #00ffa3, #2de2e6);
+  color: #0a0f1a;
+}
+.btn.danger {
+  background: linear-gradient(135deg, #ff6b6b, #ff5c7c);
+  color: #1b0b12;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.hero {
+  padding: 22px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero .title {
+  font-size: 24px;
+  margin: 0 0 4px 0;
+}
+.hero .subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.col-4 {
+  grid-column: span 4;
+}
+.col-8 {
+  grid-column: span 8;
+}
+.col-12 {
+  grid-column: span 12;
+}
+
+@media (max-width: 900px) {
+  .col-4,
+  .col-8,
+  .col-12 {
+    grid-column: span 12;
+  }
+}
+
+/* Forms */
+.form label {
+  display: block;
+  font-weight: 700;
+  margin: 12px 0 6px;
+  color: #c6c9f2;
+}
+.form input[type="text"],
+.form textarea,
+.form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: var(--panel-2);
+  color: var(--text);
+  outline: none;
+}
+.form textarea {
+  min-height: 120px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+/* List + items */
+.list {
+  padding: 12px;
+}
+.item {
+  padding: 14px;
+  margin: 10px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #141733;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+}
+body.light-theme .item {
+  background: var(--panel);
+  border-color: rgba(0,0,0,.08);
+}
+.item .meta {
+  flex: 1;
+}
+.item h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+.item p {
+  margin: 0 0 8px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* ===============================
+   CODE BLOCKS
+=============================== */
+.code {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: #0d0f23;
+}
+body.light-theme .code {
+  background: #f4f5f8;
+  border-color: rgba(0,0,0,.1);
+}
+
+/* Bulletproof fix so code always stays inside */
+.code pre,
+.code code {
+  margin: 0;
+  padding: 14px 16px;
+  padding-top: 46px; /* leave space for copy/remove buttons */
+  max-height: 240px;
+  overflow-y: auto;
+  overflow-x: auto;
+
+  /* ✅ Force wrap and break long words */
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+
+  /* ✅ Ensure horizontal scroll still works for unbroken text */
+  display: block;
+}
+
+/* ===============================
+   FIXED COPY/REMOVE BUTTONS INSIDE CODE
+=============================== */
+body[data-page="html"] .code .buttons,
+body[data-page="css"]  .code .buttons,
+body[data-page="js"]   .code .buttons {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+body[data-page="html"] .code .buttons .btn,
+body[data-page="css"]  .code .buttons .btn,
+body[data-page="js"]   .code .buttons .btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+/* Fallback if buttons appear outside code block */
+.item .buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ===============================
+   FOOTER
+=============================== */
+.footer {
+  background: linear-gradient(135deg, #222, #444);
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+  width: 100%;
+}
+.footer a {
+  color: #00c4ff;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+.footer a:hover {
+  color: #ffb400;
+}
+.footer-links {
+  margin-top: 5px;
+  font-size: .85rem;
+}
+
+/* Small UI */
+.kbd {
+  border: 1px solid rgba(255,255,255,.2);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #cfd3ff;
+  background: rgba(255,255,255,.06);
+}
+
+/* ===============================
+   HOME PAGE LINK CARDS
+=============================== */
+.link-cards {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  padding: 14px;
+}
+.link-card {
+  padding: 18px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: .2s transform ease, .2s border-color ease;
+}
+.link-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+}
+.link-card small {
+  color: var(--muted);
+}
+.badge {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: #1c2144;
+  color: #cfd3ff;
+  width: max-content;
+  border: 1px solid rgba(255,255,255,.1);
+}

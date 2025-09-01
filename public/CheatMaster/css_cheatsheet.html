@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-page="css">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Cheatsheet</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="prism.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- HEADER -->
+  <header class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-md p-4 flex flex-col md:flex-row justify-between items-center">
+    <div class="brand flex items-center gap-3">
+      <div class="logo w-10 h-10 bg-white rounded-full"></div>
+      <h1 class="text-xl md:text-2xl font-bold"><span>CheatMaster</span> • CSS</h1>
+    </div>
+    <div class="actions flex flex-wrap gap-3 mt-4 md:mt-0">
+      <a class="btn bg-white text-green-600 px-4 py-2 rounded-lg shadow hover:bg-gray-200" href="index.html" title="Go to Home">Home</a>
+      <button class="btn bg-white text-green-600 px-4 py-2 rounded-lg shadow hover:bg-gray-200" id="print" title="Print (Ctrl/Cmd+P)">Print <span class="kbd text-sm">Ctrl/⌘+P</span></button>
+      <button class="btn danger bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-red-700" id="clear-all" title="Remove all entries">Clear All</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="w-full bg-white shadow-md p-10 text-center">
+    <h2 class="title text-3xl font-bold mb-2 text-emerald-700">CSS Cheatsheet</h2>
+    <p class="subtitle text-gray-600 max-w-3xl mx-auto">
+      Add your own snippets, copy code with one click, print, save locally, and remove whenever you want.
+    </p>
+  </section>
+
+  <!-- MAIN GRID -->
+  <div class="container max-w-7xl mx-auto px-4 mt-8">
+    <div class="grid md:grid-cols-12 gap-6">
+
+      <!-- FORM -->
+      <section class="col-span-12 md:col-span-4 bg-white rounded-2xl shadow-md p-6">
+        <form id="entry-form" class="space-y-4">
+          <div>
+            <label for="topic" class="block text-sm font-medium text-gray-700">Topic</label>
+            <input id="topic" type="text" placeholder="e.g., Center a div" required
+              class="mt-1 w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+          <div>
+            <label for="desc" class="block text-sm font-medium text-gray-700">Description (optional)</label>
+            <textarea id="desc" placeholder="Short description..."
+              class="mt-1 w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+          </div>
+          <div>
+            <label for="code" class="block text-sm font-medium text-gray-700">Code</label>
+            <textarea id="code" placeholder="Paste or write your code snippet here" required
+              class="mt-1 w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+          </div>
+          <div class="flex gap-3 pt-2">
+            <button class="btn primary bg-emerald-600 text-white px-4 py-2 rounded-lg shadow hover:bg-emerald-700"
+              type="submit">Save Entry</button>
+            <button class="btn bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300"
+              type="reset">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- LIST -->
+      <section class="col-span-12 md:col-span-8 bg-white rounded-2xl shadow-md p-6" id="list" aria-live="polite">
+        <!-- Entries will be injected here -->
+      </section>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-gray-800 text-gray-300 py-6 mt-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <p>💡 Built with ❤️ by Renu Kumari Prajapati | © <span id="year"></span> CheatMaster</p>
+      <p class="footer-links mt-2">
+        <a href="index.html" class="hover:text-white">Home</a> |
+        <a href="mailto:renukumari@example.com" class="hover:text-white">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="prism.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
